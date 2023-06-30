@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Список:<h2>
+    <a href="{{url_for('add')}}">Добавить задачу</a>
+    <ul>
+        {% for todo in todos%}
+        <li>
+            <span>{{ todo.todo }}</span>
+            <span>{{ todo.status }}</span>
+            <span><a href="{{url_for('edit', id=todo.id)}}">редактировать</a></span>
+        </li>
+        {% endfor %}
+    </ul>
+    
+{% endblock %}

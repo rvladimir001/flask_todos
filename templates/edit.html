@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Редактирование задачи:<h2>
+    <span>id задачи: {{id}}</span>
+    <form action="edit" method="PATCH">
+        <p>
+            <label for="todo">Задача</label>
+            <input type="text" name="todo" value="{{todo.todo}}">
+        </p>
+        <p>
+            <label for="status">Статус</label>
+            <select name="status">
+                <option disabled>Выберите статус</option>
+                <option value="need">Сделать</option>
+                <option value="progress">В процессе</option>
+                <option value="ready">Готово</option>
+            </select>
+        </p>
+        <p>
+            <input type="submit">
+        </p>
+        {% for msg in get_flashed_messages() %}
+        <div class="flash">{{msg}}</div>
+        {% endfor%}
+    </form>
+        
+{% endblock %}
